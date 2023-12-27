@@ -16,13 +16,9 @@ import java.util.UUID;
 public interface ScheduleRepository
         extends JpaRepository<Schedule,Long> {
 
-//    @Query("SELECT Lecture FROM Schedule s join WeekDay w on w.schedule.id = s.id where s.memberId = :memberId and s.year = :year and s.semester = :semester")
-//    Optional<Lecture> findLectureBySchedule(@Param("memberId") UUID memberId, @Param("year")int year, @Param("semester") Semester semester);
-
-
     @Query("SELECT s from Schedule as s where s.memberId = :memberId")
-    Optional<Schedule> findScheduleByMemberId(@Param("memberId")UUID memberId);
+    Optional<Schedule> findScheduleByMemberId(@Param("memberId")String memberId);
 
     @Query("DELETE Schedule as s  where s.memberId = :memberId")
-    void deleteByMemberId(@Param("memberId")UUID memberId);
+    void deleteByMemberId(@Param("memberId")String memberId);
 }

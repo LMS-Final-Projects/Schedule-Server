@@ -20,17 +20,16 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @OneToMany
-    private List<WeekDay> weekdays;
+    @OneToOne
+    private WeekDay weekday;
 
     @OneToMany
     private List<Lecture> lectures;
 
-    private UUID memberId;
+    private String memberId;
 
     private Semester semester;
 
     private int year;
-
 
 }

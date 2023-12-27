@@ -1,5 +1,6 @@
 package com.example.schedule.entity;
 
+import com.example.schedule.global.kafka.KafkaAction;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,10 +16,13 @@ import lombok.NoArgsConstructor;
 public class Lecture {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long lectureId;
+    private String memberId;
     private String lectureName;
-    private int score;
-
+    private String professorName;
+    private Integer score;
+    private Integer startTime;
+    @OneToOne
+    private WeekDay weekday;
+    private KafkaAction kafkaAction;
 }

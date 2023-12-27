@@ -19,19 +19,13 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class ScheduleRequest {
-    private UUID memberId;
-    private List<WeekDay> weekdays;
-    private List<Lecture> lectures;
+    private String memberId;
     private Semester semester;
-    private int year;
+    private Integer year;
 
     public Schedule toEntity(){
         return Schedule.builder()
                 .memberId(memberId)
-                .lectures(lectures)
-                .weekdays(weekdays)
-                .semester(semester)
-                .year(year)
                 .build();
     }
 }

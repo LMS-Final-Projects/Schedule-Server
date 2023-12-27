@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -18,26 +20,18 @@ public class WeekDay {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int time;
-
-    @ManyToOne
-    private Schedule schedule;
-
     @Column
-    private Long monday;
+    private String memberId;
 
-    @Column
-    private Long tuesday;
+    @ElementCollection
+    @CollectionTable(name = "times", joinColumns = @JoinColumn(name = "weekday_id"))
+    @Column(name = "time")
+    private List<Integer> times;
 
-    @Column
-    private Long wednesday;
-
-    @Column
-    private Long thursday;
-
-    @Column
-    private Long friday;
-
+    @ElementCollection
+    @CollectionTable(name = "lecture_info", joinColumns = @JoinColumn(name = "weekday_id"))
+    @Column(name = "lecture_info")
+    private List<String> lecturesByDay;
 
 }
 

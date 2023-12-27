@@ -15,15 +15,15 @@ import java.util.UUID;
 public class ScheduleRes {
 
     private UUID id;
-    private List<WeekDay> weekdays;
+    private WeekDay weekday;
     private List<Lecture> lectures;
-    private UUID memberId;
+    private String memberId;
     private Semester semester;
     private int year;
 
     public ScheduleRes(Schedule schedule) {
         this.id = schedule.getId();
-        this.weekdays = schedule.getWeekdays();
+        this.weekday = schedule.getWeekday();
         this.lectures = schedule.getLectures();
         this.memberId = schedule.getMemberId();
         this.semester = schedule.getSemester();
