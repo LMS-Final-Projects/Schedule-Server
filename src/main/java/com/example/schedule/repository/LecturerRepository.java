@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface LecturerRepository extends JpaRepository<Lecture, String> {
+public interface LecturerRepository extends JpaRepository<Lecture, Integer> {
 
     @Query("select l from Lecture as l where l.memberId = :id")
     List<Lecture> findLecturesById(@Param("id") String id);
-
 
 }

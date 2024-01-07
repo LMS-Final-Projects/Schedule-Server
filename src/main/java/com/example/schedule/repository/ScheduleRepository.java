@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ public interface ScheduleRepository
         extends JpaRepository<Schedule,Long> {
 
     @Query("SELECT s from Schedule as s where s.memberId = :memberId")
-    Optional<Schedule> findScheduleByMemberId(@Param("memberId")String memberId);
+    List<Schedule> findScheduleByMemberId(@Param("memberId")String memberId);
 
     @Query("DELETE Schedule as s  where s.memberId = :memberId")
     void deleteByMemberId(@Param("memberId")String memberId);

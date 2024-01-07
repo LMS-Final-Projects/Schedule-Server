@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 @Entity
@@ -17,21 +18,19 @@ import java.util.List;
 public class WeekDay {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @Column
     private String memberId;
 
-    @ElementCollection
-    @CollectionTable(name = "times", joinColumns = @JoinColumn(name = "weekday_id"))
-    @Column(name = "time")
-    private List<Integer> times;
+    private String dayOfWeek;
+    private Integer lectureId;
 
-    @ElementCollection
-    @CollectionTable(name = "lecture_info", joinColumns = @JoinColumn(name = "weekday_id"))
-    @Column(name = "lecture_info")
-    private List<String> lecturesByDay;
+    @ManyToOne
+    @JoinColumn(name = "schedule_id")
+    private Schedule schedule;
 
+    public void setLectureId(Integer lectureId) {
+        this.lectureId = lectureId;
+    }
 }
 

@@ -17,16 +17,12 @@ import java.util.UUID;
 public class Schedule {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
-    @OneToOne
-    private WeekDay weekday;
-
-    @OneToMany
-    private List<Lecture> lectures;
+    private Long scheduleId;
 
     private String memberId;
+
+    @OneToMany(mappedBy = "schedule")
+    private List<WeekDay> weekday;
 
     private Semester semester;
 

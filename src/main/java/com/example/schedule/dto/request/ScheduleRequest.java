@@ -20,6 +20,7 @@ import java.util.UUID;
 @Builder
 public class ScheduleRequest {
     private String memberId;
+    private Integer LectureId;
     private Semester semester;
     private Integer year;
 

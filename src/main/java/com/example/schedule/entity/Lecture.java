@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.DayOfWeek;
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -16,13 +19,24 @@ import lombok.NoArgsConstructor;
 public class Lecture {
 
     @Id
-    private Long lectureId;
     private String memberId;
+    @Column(nullable = false)
+    private Integer lectureId;
+    @Column(nullable = false)
     private String lectureName;
+    @Column(nullable = false)
     private String professorName;
+    @Column(nullable = false)
     private Integer score;
+    @Column(nullable = false)
     private Integer startTime;
-    @OneToOne
-    private WeekDay weekday;
-    private KafkaAction kafkaAction;
+    @ElementCollection
+    private List<Integer> classTimes; // 해당 교시
+    private DayOfWeek dayOfWeek;
+    private Integer maximumNumber;
+    private Integer year;
+    @Enumerated(EnumType.STRING)
+    private Semester semester;
+
+
 }

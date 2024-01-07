@@ -4,6 +4,7 @@ import com.example.schedule.entity.Lecture;
 import com.example.schedule.entity.Schedule;
 import com.example.schedule.entity.Semester;
 import com.example.schedule.entity.WeekDay;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,21 +13,14 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@Builder
 public class ScheduleRes {
 
-    private UUID id;
-    private WeekDay weekday;
-    private List<Lecture> lectures;
+    private List<WeekDay> weekday;
     private String memberId;
+    private Long scheduleId;
     private Semester semester;
     private int year;
 
-    public ScheduleRes(Schedule schedule) {
-        this.id = schedule.getId();
-        this.weekday = schedule.getWeekday();
-        this.lectures = schedule.getLectures();
-        this.memberId = schedule.getMemberId();
-        this.semester = schedule.getSemester();
-        this.year = schedule.getYear();
-    }
+
 }
